@@ -7,4 +7,1260 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #141414;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 4vw;
+            background: linear-gradient(180deg, rgba(20,20,20,1) 10%, rgba(20,20,20,0) 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.4s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(20, 20, 20, 0.98);
+            backdrop-filter: blur(8px);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: #1565C0;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: #1565C0;
+            border-radius: 50%;
+            margin-bottom: 2px;
+        }
+
+        .header-cta {
+            background: #1565C0;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .header-cta:hover {
+            background: #0d47a1;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 4vw 60px;
+            background: linear-gradient(160deg, #0a1628 0%, #141414 60%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(21,101,192,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 680px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(21,101,192,0.15);
+            border: 1px solid rgba(21,101,192,0.4);
+            color: #64b5f6;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge::before {
+            content: '●';
+            font-size: 8px;
+            color: #42a5f5;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .highlight {
+            color: #1565C0;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-cta-main {
+            background: #1565C0;
+            color: #fff;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.1s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-cta-main:active {
+            transform: scale(0.97);
+        }
+
+        .btn-cta-main:hover {
+            background: #0d47a1;
+        }
+
+        .btn-secondary {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 16px 0;
+            transition: color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            color: #fff;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 48px;
+            padding-top: 36px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── SECTIONS ── */
+        .section {
+            padding: 80px 4vw;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1565C0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: rgba(255,255,255,0.55);
+            max-width: 520px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* ── CAROUSEL ── */
+        .carousel-wrapper {
+            position: relative;
+            margin: 0 -4vw;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 0 4vw 20px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ── PRODUCT CARDS ── */
+        .product-card {
+            flex: 0 0 260px;
+            background: #1c1c1c;
+            border-radius: 14px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: border-color 0.2s;
+        }
+
+        .product-card:hover {
+            border-color: rgba(21,101,192,0.4);
+        }
+
+        .card-icon-area {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            background: linear-gradient(135deg, #0a1628, #1c1c1c);
+        }
+
+        .card-body {
+            padding: 16px 18px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .card-tag {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1565C0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .meta-key {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .meta-val {
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            text-align: right;
+            max-width: 55%;
+        }
+
+        /* ── SERVICE CARDS ── */
+        .service-card {
+            flex: 0 0 260px;
+            background: #1c1c1c;
+            border-radius: 14px;
+            padding: 20px;
+            scroll-snap-align: start;
+            border: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .service-card:hover {
+            border-color: rgba(21,101,192,0.4);
+        }
+
+        .service-icon {
+            font-size: 36px;
+        }
+
+        .service-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .service-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .service-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* ── HOW IT WORKS ── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .step-card {
+            background: #1c1c1c;
+            border-radius: 14px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: #1565C0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .step-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+        }
+
+        /* ── CASES ── */
+        .case-card {
+            flex: 0 0 280px;
+            background: #1c1c1c;
+            border-radius: 14px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            border: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-visual {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            background: linear-gradient(135deg, #0a1628, #1c1c1c);
+        }
+
+        .case-body {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .case-tag {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1565C0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .case-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .case-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .case-results {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* ── FAQ ── */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 720px;
+        }
+
+        .faq-item {
+            background: #1c1c1c;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            text-align: left;
+            padding: 18px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-family: inherit;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            color: #1565C0;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 20px 18px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+        }
+
+        .faq-answer-inner p + p {
+            margin-top: 10px;
+        }
+
+        .faq-answer-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* ── CTA FINAL ── */
+        .cta-final {
+            padding: 80px 4vw;
+            background: linear-gradient(160deg, #0a1628 0%, #141414 100%);
+            text-align: center;
+        }
+
+        .cta-final .section-title {
+            max-width: 600px;
+            margin: 0 auto 16px;
+        }
+
+        .cta-final .section-subtitle {
+            margin: 0 auto 36px;
+            text-align: center;
+        }
+
+        .cta-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cta-note {
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            padding: 40px 4vw;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+            font-weight: 900;
+            color: #1565C0;
+            letter-spacing: -1px;
+        }
+
+        .footer-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+            max-width: 240px;
+            line-height: 1.5;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .footer-info-item {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .footer-info-item span:first-child {
+            color: #1565C0;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+            text-align: center;
+        }
+
+        /* ── FLOATING CTA ── */
+        .float-cta {
+            position: fixed;
+            bottom: 24px;
+            right: 20px;
+            z-index: 200;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 22px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 32px rgba(37,211,102,0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .float-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(37,211,102,0.45);
+        }
+
+        .float-cta:active {
+            transform: scale(0.97);
+        }
+
+        /* ── REVEAL ANIMATIONS ── */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal-card.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Word reveal */
+        .word-reveal {
+            overflow: hidden;
+        }
+
+        .word-wrap {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .word-inner {
+            display: inline-block;
+            transform: translateY(110%);
+            transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .word-inner.is-visible {
+            transform: translateY(0);
+        }
+
+        /* ── REDUCED MOTION ── */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-section,
+            .reveal-card,
+            .word-inner {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            .hero-badge::before {
+                animation: none;
+            }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 100px 4vw 80px;
+            }
+
+            .hero-title {
+                letter-spacing: -3px;
+            }
+
+            .product-card {
+                flex: 0 0 300px;
+            }
+
+            .service-card {
+                flex: 0 0 300px;
+            }
+
+            .case-card {
+                flex: 0 0 320px;
+            }
+
+            .cta-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="mainHeader">
+        <div class="logo">
+            <div class="logo-dot"></div>
+            SOS Piscinas
+        </div>
+        <a href="https://wa.me/5521971945857?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento." class="header-cta" target="_blank" rel="noopener">
+            Orçamento grátis
+        </a>
+    </header>
+
+    <!-- FLOATING CTA -->
+    <a href="https://wa.me/5521971945857?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento." class="float-cta" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+    </a>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">São Gonçalo · Niterói · Todo o Rio de Janeiro</div>
+
+            <h1 class="hero-title word-reveal">
+                <span class="word-wrap"><span class="word-inner">A</span></span>&#32;<span class="word-wrap"><span class="word-inner">sua</span></span>&#32;<span class="word-wrap"><span class="word-inner highlight">piscina</span></span><br>
+                <span class="word-wrap"><span class="word-inner">perfeita,</span></span><br>
+                <span class="word-wrap"><span class="word-inner">do</span></span>&#32;<span class="word-wrap"><span class="word-inner">projeto</span></span>&#32;<span class="word-wrap"><span class="word-inner">à</span></span><br>
+                <span class="word-wrap"><span class="word-inner highlight">entrega.</span></span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Piscinas, aquecedores, saunas, filtros e acessórios. Loja física com estoque real em São Gonçalo e equipe técnica para todo o Rio de Janeiro.
+            </p>
+
+            <div class="hero-actions">
+                <a href="https://wa.me/5521971945857?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento." class="btn-cta-main" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Pedir orçamento grátis
+                </a>
+                <a href="tel:+5521971945857" class="btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 6.82 19.79 19.79 0 01.69 2.19 2 2 0 012.68 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.65a16 16 0 006.29 6.29l1.02-1.02a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                    Ligar agora
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">+20</span>
+                    <span class="stat-label">Anos de mercado</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">RJ</span>
+                    <span class="stat-label">Todo o estado</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5★</span>
+                    <span class="stat-label">Atendimento</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="section reveal-section">
+        <p class="section-label">O que vendemos</p>
+        <h2 class="section-title">Produtos a pronta entrega</h2>
+        <p class="section-subtitle">Produtos a pronta entrega e instalação técnica especializada. Retirada em loja ou entrega em todo o Rio de Janeiro.</p>
+
+        <div class="carousel-wrapper">
+            <div class="carousel">
+                <div class="product-card reveal-card">
+                    <div class="card-icon-area">🏊</div>
+                    <div class="card-body">
+                        <span class="card-tag">Piscinas</span>
+                        <h3 class="card-title">Piscinas Residenciais</h3>
+                        <p class="card-desc">Fibra de vidro, alvenaria e acrílicas. Vendemos e instalamos piscinas residenciais e para condomínios de diferentes tamanhos e modelos.</p>
+                        <div class="card-meta">
+                            <div class="meta-row"><span class="meta-key">Tipos</span><span class="meta-val">Fibra de vidro, Alvenaria revestida, Vinil</span></div>
+                            <div class="meta-row"><span class="meta-key">Atendimento</span><span class="meta-val">Residências e condomínios</span></div>
+                            <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card reveal-card">
+                    <div class="card-icon-area">☀️</div>
+                    <div class="card-body">
+                        <span class="card-tag">Aquecimento</span>
+                        <h3 class="card-title">Aquecedores Solares</h3>
+                        <p class="card-desc">Use sua piscina o ano todo — no inverno também. Os aquecedores solares elevam a temperatura da água com energia do sol, sem custo de energia elétrica.</p>
+                        <div class="card-meta">
+                            <div class="meta-row"><span class="meta-key">Benefício</span><span class="meta-val">Economia de até 90% na conta de energia</span></div>
+                            <div class="meta-row"><span class="meta-key">Instalação</span><span class="meta-val">Incluída no orçamento</span></div>
+                            <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">Técnica inclusa</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card reveal-card">
+                    <div class="card-icon-area">⚙️</div>
+                    <div class="card-body">
+                        <span class="card-tag">Equipamentos</span>
+                        <h3 class="card-title">Filtros e Bombas</h3>
+                        <p class="card-desc">Filtros de alta performance e bombas de circulação de marcas líderes como Dancor, Nautilus e Sodramar. Temos em estoque para retirada imediata.</p>
+                        <div class="card-meta">
+                            <div class="meta-row"><span class="meta-key">Retirada</span><span class="meta-val">Imediata na loja em São Gonçalo</span></div>
+                            <div class="meta-row"><span class="meta-key">Entrega</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
+                            <div class="meta-row"><span class="meta-key">Instalação</span><span class="meta-val">Disponível</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card reveal-card">
+                    <div class="card-icon-area">🧖</div>
+                    <div class="card-body">
+                        <span class="card-tag">Bem-estar</span>
+                        <h3 class="card-title">Saunas</h3>
+                        <p class="card-desc">Saunas secas e a vapor para residências. Transforme sua área de lazer com o relaxamento que você merece sem sair de casa.</p>
+                        <div class="card-meta">
+                            <div class="meta-row"><span class="meta-key">Tipos</span><span class="meta-val">Seca (elétrica ou a lenha) e Vapor</span></div>
+                            <div class="meta-row"><span class="meta-key">Instalação</span><span class="meta-val">Técnica especializada</span></div>
+                            <div class="meta-row"><span class="meta-key">Personalização</span><span class="meta-val">Sob medida</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card reveal-card">
+                    <div class="card-icon-area">🛁</div>
+                    <div class="card-body">
+                        <span class="card-tag">Hidromassagem</span>
+                        <h3 class="card-title">Banheiras e Spas</h3>
+                        <p class="card-desc">Hidromassagem no conforto da sua casa. Instalamos banheiras e spas de hidromassagem para relaxamento e saúde muscular.</p>
+                        <div class="card-meta">
+                            <div class="meta-row"><span class="meta-key">Modelos</span><span class="meta-val">Individual e Duplo</span></div>
+                            <div class="meta-row"><span class="meta-key">Instalação</span><span class="meta-val">Técnica completa</span></div>
+                            <div class="meta-row"><span class="meta-key">Suporte</span><span class="meta-val">Pós-venda incluso</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card reveal-card">
+                    <div class="card-icon-area">🧹</div>
+                    <div class="card-body">
+                        <span class="card-tag">Acessórios</span>
+                        <h3 class="card-title">Acessórios para Piscina</h3>
+                        <p class="card-desc">Tudo que sua piscina precisa em um único lugar. Mangueiras, escovas, peneiras, skimmers, bóias, tampas e muito mais.</p>
+                        <div class="card-meta">
+                            <div class="meta-row"><span class="meta-key">Retirada</span><span class="meta-val">Imediata na loja em São Gonçalo</span></div>
+                            <div class="meta-row"><span class="meta-key">Entrega</span><span class="meta-val">Todo o RJ</span></div>
+                            <div class="meta-row"><span class="meta-key">Estoque</span><span class="meta-val">Produtos a pronta entrega</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card reveal-card">
+                    <div class="card-icon-area">🔥</div>
+                    <div class="card-body">
+                        <span class="card-tag">Lazer</span>
+                        <h3 class="card-title">Churrasqueiras</h3>
+                        <p class="card-desc">Complete sua área de lazer com a churrasqueira ideal. Vendemos e instalamos churrasqueiras residenciais de alvenaria e pré-moldadas.</p>
+                        <div class="card-meta">
+                            <div class="meta-row"><span class="meta-key">Tipos</span><span class="meta-val">Alvenaria, Pré-moldada, Inox</span></div>
+                            <div class="meta-row"><span class="meta-key">Instalação</span><span class="meta-val">Técnica especializada</span></div>
+                            <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">São Gonçalo e Niterói</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section reveal-section" style="background: #111;">
+        <p class="section-label">O que instalamos</p>
+        <h2 class="section-title">Serviços com garantia técnica</h2>
+        <p class="section-subtitle">Da fundação ao acabamento. Nossa equipe instala piscinas de fibra, alvenaria e vinil com total responsabilidade técnica e garantia de obra.</p>
+
+        <div class="carousel-wrapper">
+            <div class="carousel">
+                <div class="service-card reveal-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3 class="service-title">Instalação de Piscinas</h3>
+                    <p class="service-desc">Da fundação ao acabamento. Nossa equipe instala piscinas de fibra, alvenaria e vinil com total responsabilidade técnica e garantia de obra.</p>
+                    <div class="service-details">
+                        <div class="meta-row"><span class="meta-key">Processo</span><span class="meta-val">1. Você nos chama pelo WhatsApp</span></div>
+                        <div class="meta-row"><span class="meta-key"></span><span class="meta-val">2. Enviamos o orçamento detalhado</span></div>
+                        <div class="meta-row"><span class="meta-key"></span><span class="meta-val">3. Agendamos a visita técnica</span></div>
+                        <div class="meta-row"><span class="meta-key"></span><span class="meta-val">4. Executamos com garantia</span></div>
+                    </div>
+                </div>
+                <div class="service-card reveal-card">
+                    <div class="service-icon">☀️</div>
+                    <h3 class="service-title">Instalação de Aquecedores</h3>
+                    <p class="service-desc">Instalação técnica de aquecedores solares e bombas de calor. Técnicos treinados com materiais de qualidade e garantia no serviço.</p>
+                    <div class="service-details">
+                        <div class="meta-row"><span class="meta-key">Prazo</span><span class="meta-val">Agendamento em até 48h</span></div>
+                        <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">Inclusa na instalação</span></div>
+                        <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
+                    </div>
+                </div>
+                <div class="service-card reveal-card">
+                    <div class="service-icon">🔧</div>
+                    <h3 class="service-title">Troca de Equipamentos</h3>
+                    <p class="service-desc">Bomba quebrou ou filtro com problema? Nossos técnicos instalam e substituem equipamentos com agilidade em toda a região.</p>
+                    <div class="service-details">
+                        <div class="meta-row"><span class="meta-key">Atendimento</span><span class="meta-val">Rápido e sem burocracia</span></div>
+                        <div class="meta-row"><span class="meta-key">Estoque</span><span class="meta-val">Produto + instalação no mesmo dia</span></div>
+                        <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">No serviço executado</span></div>
+                    </div>
+                </div>
+                <div class="service-card reveal-card">
+                    <div class="service-icon">🧖</div>
+                    <h3 class="service-title">Saunas e Hidromassagem</h3>
+                    <p class="service-desc">Instalamos saunas secas, saunas a vapor e banheiras de hidromassagem. Tudo executado por equipe técnica especializada.</p>
+                    <div class="service-details">
+                        <div class="meta-row"><span class="meta-key">Visita técnica</span><span class="meta-val">Grátis para orçamento</span></div>
+                        <div class="meta-row"><span class="meta-key">Execução</span><span class="meta-val">Com garantia</span></div>
+                        <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Grande RJ</span></div>
+                    </div>
+                </div>
+                <div class="service-card reveal-card">
+                    <div class="service-icon">🔥</div>
+                    <h3 class="service-title">Instalação de Churrasqueiras</h3>
+                    <p class="service-desc">Complete sua área de lazer com a churrasqueira ideal instalada por quem entende. Projetos personalizados para o seu espaço.</p>
+                    <div class="service-details">
+                        <div class="meta-row"><span class="meta-key">Modelos</span><span class="meta-val">Alvenaria e pré-moldada</span></div>
+                        <div class="meta-row"><span class="meta-key">Projeto</span><span class="meta-val">Personalizado para seu espaço</span></div>
+                        <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">Na execução</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASES -->
+    <section class="section reveal-section">
+        <p class="section-label">Projetos realizados</p>
+        <h2 class="section-title">Clientes satisfeitos</h2>
+        <p class="section-subtitle">Veja alguns dos projetos que executamos em residências e condomínios pelo Rio de Janeiro.</p>
+
+        <div class="carousel-wrapper">
+            <div class="carousel">
+                <div class="case-card reveal-card">
+                    <div class="case-visual">🏊</div>
+                    <div class="case-body">
+                        <span class="case-tag">Instalação</span>
+                        <h3 class="case-title">Piscina de Fibra — São Gonçalo</h3>
+                        <p class="case-desc">Instalação de piscina de fibra em residência no Rio de Janeiro. Do orçamento à entrega da obra em poucos dias, com toda a casa de máquinas inclusa.</p>
+                        <div class="case-results">
+                            <div class="meta-row"><span class="meta-key">Tempo de execução</span><span class="meta-val">Rápido e sem obra pesada</span></div>
+                            <div class="meta-row"><span class="meta-key">Incluso</span><span class="meta-val">Filtro, bomba e acessórios básicos</span></div>
+                            <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">Total na instalação</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card reveal-card">
+                    <div class="case-visual">☀️</div>
+                    <div class="case-body">
+                        <span class="case-tag">Aquecimento</span>
+                        <h3 class="case-title">Aquecedor Solar — Niterói</h3>
+                        <p class="case-desc">Cliente passou a usar a piscina o ano todo após a instalação do aquecedor solar. Sem custo de energia e com o conforto do banho quente até no inverno carioca.</p>
+                        <div class="case-results">
+                            <div class="meta-row"><span class="meta-key">Economia</span><span class="meta-val">Até 90% no custo de aquecimento</span></div>
+                            <div class="meta-row"><span class="meta-key">Instalação</span><span class="meta-val">1 dia</span></div>
+                            <div class="meta-row"><span class="meta-key">Retorno</span><span class="meta-val">Em menos de 2 anos</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card reveal-card">
+                    <div class="case-visual">🏡</div>
+                    <div class="case-body">
+                        <span class="case-tag">Projeto completo</span>
+                        <h3 class="case-title">Área de Lazer Completa</h3>
+                        <p class="case-desc">Piscina, aquecedor, churrasqueira e iluminação. Transformamos áreas de lazer completas com projeto personalizado e execução própria.</p>
+                        <div class="case-results">
+                            <div class="meta-row"><span class="meta-key">Projeto</span><span class="meta-val">100% personalizado</span></div>
+                            <div class="meta-row"><span class="meta-key">Execução</span><span class="meta-val">Equipe própria e treinada</span></div>
+                            <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section reveal-section" style="background: #111;">
+        <p class="section-label">Dúvidas frequentes</p>
+        <h2 class="section-title">Perguntas e respostas</h2>
+        <p class="section-subtitle">Tire suas principais dúvidas sobre nossos produtos e serviços.</p>
+
+        <div class="faq-list" id="faqList">
+            <div class="faq-item">
+                <button class="faq-question">
+                    Vocês têm loja física?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Sim. Temos loja física em São Gonçalo com estoque real. Você pode retirar na hora ou verificar a disponibilidade pelo WhatsApp antes de vir.</p>
+                        <div class="faq-answer-meta">
+                            <div class="meta-row"><span class="meta-key">Endereço</span><span class="meta-val">R. Francisco Portela, 2627 – Zé Garoto, São Gonçalo – RJ</span></div>
+                            <div class="meta-row"><span class="meta-key">Horário</span><span class="meta-val">Seg–Sex: 8h às 17h30</span></div>
+                            <div class="meta-row"><span class="meta-key">Entrega</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Vocês fazem instalação?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Sim. Instalamos tudo que vendemos. Piscinas, aquecedores solares, bombas, filtros, saunas, banheiros de hidromassagem e churrasqueiras.</p>
+                        <p>Nossa equipe técnica vai até você, faz o orçamento gratuito e executa o serviço com garantia. Sem terceiros, sem surpresas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Fazem entrega fora de São Gonçalo?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Entregamos produtos em todo o estado do Rio de Janeiro. Consulte o prazo e frete para sua região pelo WhatsApp.</p>
+                        <p>Para instalações, atendemos principalmente a Grande Rio (Niterói, São Gonçalo, Região dos Lagos e Região Serrana). Consulte disponibilidade para sua cidade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final reveal-section">
+        <p class="section-label">Pronto para começar?</p>
+        <h2 class="section-title">Solicite seu orçamento agora</h2>
+        <p class="section-subtitle">Mais de 20 anos atendendo clientes em São Gonçalo, Niterói e todo o Rio de Janeiro. Loja física com estoque real e equipe técnica própria para instalações.</p>
+
+        <div class="cta-actions">
+            <a href="https://wa.me/5521971945857?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento." class="btn-cta-main" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Falar no WhatsApp
+            </a>
+        </div>
+        <p class="cta-note" style="margin-top: 16px;">Atendimento de Seg–Sex: 8h às 17h30 · (21) 97194-5857</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <div class="footer-logo">SOS Piscinas</div>
+            <p class="footer-desc">Especialistas em piscinas, aquecedores, saunas e lazer há mais de 20 anos no Rio de Janeiro.</p>
+        </div>
+        <div class="footer-info">
+            <div class="footer-info-item">
+                <span>📍</span>
+                <span>R. Francisco Portela, 2627 – Zé Garoto, São Gonçalo – RJ</span>
+            </div>
+            <div class="footer-info-item">
+                <span>🕐</span>
+                <span>Seg–Sex: 8h às 17h30</span>
+            </div>
+            <div class="footer-info-item">
+                <span>📱</span>
+                <span>(21) 97194-5857</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 SOS Piscinas. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            // Header scroll
+            var header = document.getElementById('mainHeader');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 40) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
+
+            // FAQ accordion
+            var faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(function (item) {
+                var btn = item.querySelector('.faq-question');
+                btn.addEventListener('click', function () {
+                    var isOpen = item.classList.contains('open');
+                    faqItems.forEach(function (i) { i.classList.remove('open'); });
+                    if (!isOpen) item.classList.add('open');
+                });
+            });
+
+            // Scroll reveal
+            var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var wordRevealEls = document.querySelectorAll('.word-reveal');
+
+            if (prefersReduced) return;
+
+            var observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            var revealObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-section').forEach(function (el) {
+                revealObserver.observe(el);
+            });
+
+            var carousels = document.querySelectorAll('.carousel');
+            carousels.forEach(function (carousel) {
+                var cards = carousel.querySelectorAll('.reveal-card');
+                var cardObserver = new IntersectionObserver(function (entries) {
+                    var visible = entries.filter(function (e) { return e.isIntersecting; });
+                    visible.forEach(function (entry, i) {
+                        var card = entry.target;
+                        setTimeout(function () {
+                            card.classList.add('is-visible');
+                        }, i * 80);
+                        cardObserver.unobserve(card);
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+                cards.forEach(function (card) { cardObserver.observe(card); });
+            });
+
+            var wordObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        var words = entry.target.querySelectorAll('.word-inner');
+                        words.forEach(function (word, i) {
+                            setTimeout(function () {
+                                word.classList.add('is-visible');
+                            }, i * 40);
+                        });
+                        wordObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            wordRevealEls.forEach(function (el) {
+                if (!el.closest('.hero-content')) {
+                    wordObserver.observe(el);
+                } else {
+                    var words = el.querySelectorAll('.word-inner');
+                    words.forEach(function (word, i) {
+                        setTimeout(function () {
+                            word.classList.add('is-visible');
+                        }, 120 + i * 40);
+                    });
+                }
+            });
+
+            document.addEventListener('touchstart', function (e) {
+                var btn = e.target.closest('.btn-cta-main');
+                if (btn) {
+                    if (audioCtx && audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+                    playPopSound();
+                }
+            }, { passive: true });
+
+            document.addEventListener('click', function (e) {
+                var btn = e.target.closest('.btn-cta-main');
+                if (btn) playPopSound();
+            });
+        })();
+    </script>
+
+</body>
+</html>
