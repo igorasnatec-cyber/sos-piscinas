@@ -17,37 +17,58 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* ── AQUA PREMIUM PALETTE ── */
+        :root {
+            --color-bg:             #eef6f9;
+            --color-surface:        #f4f9fb;
+            --color-surface-2:      #ffffff;
+            --color-surface-alt:    #e2eff5;
+            --color-border:         oklch(0.45 0.05 220 / 0.13);
+            --color-text:           #0f2a38;
+            --color-text-muted:     #3d6174;
+            --color-text-faint:     #7aa4b5;
+            --color-primary:        #0077a8;
+            --color-primary-hover:  #005b82;
+            --color-primary-light:  rgba(0,119,168,0.10);
+            --color-primary-border: rgba(0,119,168,0.30);
+            --shadow-sm: 0 1px 3px oklch(0.30 0.05 220 / 0.09);
+            --shadow-md: 0 4px 16px oklch(0.30 0.05 220 / 0.11);
+            --shadow-lg: 0 12px 40px oklch(0.30 0.05 220 / 0.15);
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: #141414;
-            color: #ffffff;
+            background-color: var(--color-bg);
+            color: var(--color-text);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* ── HEADER ── */
         .header {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 16px 4vw;
-            background: linear-gradient(180deg, rgba(20,20,20,1) 10%, rgba(20,20,20,0) 100%);
+            background: linear-gradient(180deg, rgba(238,246,249,0.98) 60%, rgba(238,246,249,0) 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            transition: background 0.4s ease;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
         }
 
         .header.scrolled {
-            background: rgba(20, 20, 20, 0.98);
+            background: rgba(238,246,249,0.97);
             backdrop-filter: blur(8px);
+            box-shadow: var(--shadow-sm);
         }
 
         .logo {
             font-size: 26px;
             font-weight: 900;
-            color: #1565C0;
+            color: var(--color-primary);
             letter-spacing: -1.5px;
             text-transform: uppercase;
             display: flex;
@@ -58,13 +79,13 @@
         .logo-dot {
             width: 8px;
             height: 8px;
-            background: #1565C0;
+            background: var(--color-primary);
             border-radius: 50%;
             margin-bottom: 2px;
         }
 
         .header-cta {
-            background: #1565C0;
+            background: var(--color-primary);
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -78,7 +99,7 @@
         }
 
         .header-cta:hover {
-            background: #0d47a1;
+            background: var(--color-primary-hover);
         }
 
         /* ── HERO ── */
@@ -88,7 +109,7 @@
             flex-direction: column;
             justify-content: center;
             padding: 80px 4vw 60px;
-            background: linear-gradient(160deg, #0a1628 0%, #141414 60%);
+            background: linear-gradient(160deg, #cce8f4 0%, #eef6f9 65%);
             position: relative;
             overflow: hidden;
         }
@@ -97,7 +118,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(21,101,192,0.15) 0%, transparent 70%);
+            background: radial-gradient(ellipse 70% 55% at 55% 35%, rgba(0,119,168,0.10) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -111,9 +132,9 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(21,101,192,0.15);
-            border: 1px solid rgba(21,101,192,0.4);
-            color: #64b5f6;
+            background: var(--color-primary-light);
+            border: 1px solid var(--color-primary-border);
+            color: var(--color-primary);
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 12px;
@@ -126,7 +147,7 @@
         .hero-badge::before {
             content: '●';
             font-size: 8px;
-            color: #42a5f5;
+            color: var(--color-primary);
             animation: pulse-dot 2s ease-in-out infinite;
         }
 
@@ -141,15 +162,16 @@
             line-height: 1.05;
             letter-spacing: -2px;
             margin-bottom: 20px;
+            color: var(--color-text);
         }
 
         .hero-title .highlight {
-            color: #1565C0;
+            color: var(--color-primary);
         }
 
         .hero-subtitle {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: rgba(255,255,255,0.65);
+            color: var(--color-text-muted);
             line-height: 1.6;
             margin-bottom: 36px;
             max-width: 520px;
@@ -163,7 +185,7 @@
         }
 
         .btn-cta-main {
-            background: #1565C0;
+            background: var(--color-primary);
             color: #fff;
             border: none;
             padding: 16px 32px;
@@ -176,6 +198,7 @@
             align-items: center;
             gap: 8px;
             transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 16px rgba(0,119,168,0.25);
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -184,11 +207,11 @@
         }
 
         .btn-cta-main:hover {
-            background: #0d47a1;
+            background: var(--color-primary-hover);
         }
 
         .btn-secondary {
-            color: rgba(255,255,255,0.7);
+            color: var(--color-text-muted);
             font-size: 14px;
             font-weight: 500;
             text-decoration: none;
@@ -200,7 +223,7 @@
         }
 
         .btn-secondary:hover {
-            color: #fff;
+            color: var(--color-primary);
         }
 
         .hero-stats {
@@ -209,7 +232,7 @@
             gap: 24px;
             margin-top: 48px;
             padding-top: 36px;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid var(--color-border);
         }
 
         .stat-item {
@@ -221,13 +244,13 @@
         .stat-number {
             font-size: 28px;
             font-weight: 900;
-            color: #fff;
+            color: var(--color-primary);
             letter-spacing: -1px;
         }
 
         .stat-label {
             font-size: 12px;
-            color: rgba(255,255,255,0.5);
+            color: var(--color-text-muted);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -236,12 +259,17 @@
         /* ── SECTIONS ── */
         .section {
             padding: 80px 4vw;
+            background: var(--color-bg);
+        }
+
+        .section-alt {
+            background: var(--color-surface-alt);
         }
 
         .section-label {
             font-size: 11px;
             font-weight: 700;
-            color: #1565C0;
+            color: var(--color-primary);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 12px;
@@ -253,11 +281,12 @@
             letter-spacing: -1.5px;
             line-height: 1.1;
             margin-bottom: 16px;
+            color: var(--color-text);
         }
 
         .section-subtitle {
             font-size: 16px;
-            color: rgba(255,255,255,0.55);
+            color: var(--color-text-muted);
             max-width: 520px;
             line-height: 1.6;
             margin-bottom: 40px;
@@ -286,18 +315,20 @@
         /* ── PRODUCT CARDS ── */
         .product-card {
             flex: 0 0 260px;
-            background: #1c1c1c;
+            background: var(--color-surface-2);
             border-radius: 14px;
             overflow: hidden;
             scroll-snap-align: start;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: border-color 0.2s;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         .product-card:hover {
-            border-color: rgba(21,101,192,0.4);
+            border-color: var(--color-primary-border);
+            box-shadow: var(--shadow-md);
         }
 
         .card-icon-area {
@@ -306,7 +337,7 @@
             align-items: center;
             justify-content: center;
             font-size: 48px;
-            background: linear-gradient(135deg, #0a1628, #1c1c1c);
+            background: linear-gradient(135deg, #cce8f4, #e8f4fa);
         }
 
         .card-body {
@@ -320,7 +351,7 @@
         .card-tag {
             font-size: 10px;
             font-weight: 700;
-            color: #1565C0;
+            color: var(--color-primary);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -329,11 +360,12 @@
             font-size: 17px;
             font-weight: 700;
             line-height: 1.3;
+            color: var(--color-text);
         }
 
         .card-desc {
             font-size: 13px;
-            color: rgba(255,255,255,0.55);
+            color: var(--color-text-muted);
             line-height: 1.5;
             flex: 1;
         }
@@ -343,7 +375,7 @@
             flex-direction: column;
             gap: 4px;
             padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid var(--color-border);
         }
 
         .meta-row {
@@ -353,11 +385,11 @@
         }
 
         .meta-key {
-            color: rgba(255,255,255,0.4);
+            color: var(--color-text-faint);
         }
 
         .meta-val {
-            color: rgba(255,255,255,0.8);
+            color: var(--color-text-muted);
             font-weight: 500;
             text-align: right;
             max-width: 55%;
@@ -366,19 +398,21 @@
         /* ── SERVICE CARDS ── */
         .service-card {
             flex: 0 0 260px;
-            background: #1c1c1c;
+            background: var(--color-surface-2);
             border-radius: 14px;
             padding: 20px;
             scroll-snap-align: start;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
             gap: 12px;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         .service-card:hover {
-            border-color: rgba(21,101,192,0.4);
+            border-color: var(--color-primary-border);
+            box-shadow: var(--shadow-md);
         }
 
         .service-icon {
@@ -388,11 +422,12 @@
         .service-title {
             font-size: 16px;
             font-weight: 700;
+            color: var(--color-text);
         }
 
         .service-desc {
             font-size: 13px;
-            color: rgba(255,255,255,0.55);
+            color: var(--color-text-muted);
             line-height: 1.5;
             flex: 1;
         }
@@ -402,60 +437,25 @@
             flex-direction: column;
             gap: 4px;
             padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-
-        /* ── HOW IT WORKS ── */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .step-card {
-            background: #1c1c1c;
-            border-radius: 14px;
-            padding: 24px;
-            border: 1px solid rgba(255,255,255,0.06);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .step-number {
-            width: 36px;
-            height: 36px;
-            background: #1565C0;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 900;
-            color: #fff;
-        }
-
-        .step-title {
-            font-size: 16px;
-            font-weight: 700;
-        }
-
-        .step-desc {
-            font-size: 13px;
-            color: rgba(255,255,255,0.55);
-            line-height: 1.5;
+            border-top: 1px solid var(--color-border);
         }
 
         /* ── CASES ── */
         .case-card {
             flex: 0 0 280px;
-            background: #1c1c1c;
+            background: var(--color-surface-2);
             border-radius: 14px;
             overflow: hidden;
             scroll-snap-align: start;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
+            transition: box-shadow 0.2s;
+        }
+
+        .case-card:hover {
+            box-shadow: var(--shadow-md);
         }
 
         .case-visual {
@@ -464,7 +464,7 @@
             align-items: center;
             justify-content: center;
             font-size: 56px;
-            background: linear-gradient(135deg, #0a1628, #1c1c1c);
+            background: linear-gradient(135deg, #cce8f4, #e8f4fa);
         }
 
         .case-body {
@@ -478,7 +478,7 @@
         .case-tag {
             font-size: 10px;
             font-weight: 700;
-            color: #1565C0;
+            color: var(--color-primary);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -487,11 +487,12 @@
             font-size: 16px;
             font-weight: 700;
             line-height: 1.3;
+            color: var(--color-text);
         }
 
         .case-desc {
             font-size: 13px;
-            color: rgba(255,255,255,0.55);
+            color: var(--color-text-muted);
             line-height: 1.5;
             flex: 1;
         }
@@ -501,7 +502,7 @@
             flex-direction: column;
             gap: 4px;
             padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid var(--color-border);
         }
 
         /* ── FAQ ── */
@@ -513,17 +514,18 @@
         }
 
         .faq-item {
-            background: #1c1c1c;
+            background: var(--color-surface-2);
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
         }
 
         .faq-question {
             width: 100%;
             background: none;
             border: none;
-            color: #fff;
+            color: var(--color-text);
             text-align: left;
             padding: 18px 20px;
             font-size: 15px;
@@ -539,7 +541,7 @@
 
         .faq-icon {
             font-size: 20px;
-            color: #1565C0;
+            color: var(--color-primary);
             flex-shrink: 0;
             transition: transform 0.3s ease;
         }
@@ -561,7 +563,7 @@
         .faq-answer-inner {
             padding: 0 20px 18px;
             font-size: 14px;
-            color: rgba(255,255,255,0.6);
+            color: var(--color-text-muted);
             line-height: 1.7;
         }
 
@@ -569,19 +571,10 @@
             margin-top: 10px;
         }
 
-        .faq-answer-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-
         /* ── CTA FINAL ── */
         .cta-final {
             padding: 80px 4vw;
-            background: linear-gradient(160deg, #0a1628 0%, #141414 100%);
+            background: linear-gradient(160deg, #cce8f4 0%, #eef6f9 100%);
             text-align: center;
         }
 
@@ -604,13 +597,14 @@
 
         .cta-note {
             font-size: 12px;
-            color: rgba(255,255,255,0.35);
+            color: var(--color-text-faint);
         }
 
         /* ── FOOTER ── */
         .footer {
             padding: 40px 4vw;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-surface-alt);
             display: flex;
             flex-wrap: wrap;
             gap: 24px;
@@ -627,13 +621,13 @@
         .footer-logo {
             font-size: 22px;
             font-weight: 900;
-            color: #1565C0;
+            color: var(--color-primary);
             letter-spacing: -1px;
         }
 
         .footer-desc {
             font-size: 13px;
-            color: rgba(255,255,255,0.45);
+            color: var(--color-text-muted);
             max-width: 240px;
             line-height: 1.5;
         }
@@ -646,23 +640,23 @@
 
         .footer-info-item {
             font-size: 13px;
-            color: rgba(255,255,255,0.55);
+            color: var(--color-text-muted);
             display: flex;
             align-items: flex-start;
             gap: 8px;
         }
 
         .footer-info-item span:first-child {
-            color: #1565C0;
+            color: var(--color-primary);
             flex-shrink: 0;
         }
 
         .footer-bottom {
             width: 100%;
             padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid var(--color-border);
             font-size: 12px;
-            color: rgba(255,255,255,0.3);
+            color: var(--color-text-faint);
             text-align: center;
         }
 
@@ -856,12 +850,13 @@
 
         <div class="carousel-wrapper">
             <div class="carousel">
+                <!-- PISCINAS -->
                 <div class="product-card reveal-card">
                     <div class="card-icon-area">🏊</div>
                     <div class="card-body">
                         <span class="card-tag">Piscinas</span>
                         <h3 class="card-title">Piscinas Residenciais</h3>
-                        <p class="card-desc">Fibra de vidro e alvenaria. Vendemos e instalamos piscinas residenciais e para condomínios de diferentes tamanhos e modelos.</p>
+                        <p class="card-desc">Vendemos e instalamos piscinas de diversos tamanhos e modelos para residências e condomínios em todo o Rio de Janeiro.</p>
                         <div class="card-meta">
                             <div class="meta-row"><span class="meta-key">Tipos</span><span class="meta-val">Fibra de vidro, Alvenaria revestida, Vinil</span></div>
                             <div class="meta-row"><span class="meta-key">Atendimento</span><span class="meta-val">Residências e condomínios</span></div>
@@ -869,12 +864,13 @@
                         </div>
                     </div>
                 </div>
+                <!-- AQUECEDORES -->
                 <div class="product-card reveal-card">
                     <div class="card-icon-area">☀️</div>
                     <div class="card-body">
                         <span class="card-tag">Aquecimento</span>
                         <h3 class="card-title">Aquecedores</h3>
-                        <p class="card-desc">Use sua piscina o ano todo — no inverno também. Trabalhamos com aquecimento de diversos tipos para elevar a temperatura da água com conforto e economia.</p>
+                        <p class="card-desc">Use sua piscina o ano inteiro — Aqueça sua piscina com conforto e economia. Trabalhamos com aquecimento de diversos tipos para elevar a temperatura da água em qualquer época.</p>
                         <div class="card-meta">
                             <div class="meta-row"><span class="meta-key">Benefício</span><span class="meta-val">Economia de até 90% na conta de energia</span></div>
                             <div class="meta-row"><span class="meta-key">Instalação</span><span class="meta-val">Incluída no orçamento</span></div>
@@ -882,12 +878,13 @@
                         </div>
                     </div>
                 </div>
+                <!-- FILTROS E BOMBAS -->
                 <div class="product-card reveal-card">
                     <div class="card-icon-area">⚙️</div>
                     <div class="card-body">
                         <span class="card-tag">Equipamentos</span>
                         <h3 class="card-title">Filtros e Bombas</h3>
-                        <p class="card-desc">Filtros de alta performance e bombas de circulação de marcas líderes como Dancor, Nautilus e Sodramar. Temos em estoque para retirada imediata.</p>
+                        <p class="card-desc">Filtros de alta performance e bombas de circulação de marcas líderes como Dancor, Nautilus e Albacete. Temos em estoque para retirada imediata.</p>
                         <div class="card-meta">
                             <div class="meta-row"><span class="meta-key">Retirada</span><span class="meta-val">Imediata na loja em São Gonçalo</span></div>
                             <div class="meta-row"><span class="meta-key">Entrega</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
@@ -895,6 +892,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- SAUNAS -->
                 <div class="product-card reveal-card">
                     <div class="card-icon-area">🧖</div>
                     <div class="card-body">
@@ -908,6 +906,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- BANHEIRAS -->
                 <div class="product-card reveal-card">
                     <div class="card-icon-area">🛁</div>
                     <div class="card-body">
@@ -921,6 +920,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- ACESSÓRIOS -->
                 <div class="product-card reveal-card">
                     <div class="card-icon-area">🧹</div>
                     <div class="card-body">
@@ -934,6 +934,21 @@
                         </div>
                     </div>
                 </div>
+                <!-- REDE DE PROTEÇÃO -->
+                <div class="product-card reveal-card">
+                    <div class="card-icon-area">🛡️</div>
+                    <div class="card-body">
+                        <span class="card-tag">Segurança</span>
+                        <h3 class="card-title">Rede de Proteção</h3>
+                        <p class="card-desc">Redes de proteção para piscinas — segurança para crianças e pets sem abrir mão da estética. Instalação sob medida para qualquer formato de piscina.</p>
+                        <div class="card-meta">
+                            <div class="meta-row"><span class="meta-key">Finalidade</span><span class="meta-val">Proteção de crianças e animais</span></div>
+                            <div class="meta-row"><span class="meta-key">Instalação</span><span class="meta-val">Sob medida para sua piscina</span></div>
+                            <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CHURRASQUEIRAS -->
                 <div class="product-card reveal-card">
                     <div class="card-icon-area">🔥</div>
                     <div class="card-body">
@@ -952,7 +967,7 @@
     </section>
 
     <!-- SERVIÇOS -->
-    <section class="section reveal-section" style="background: #111;">
+    <section class="section section-alt reveal-section">
         <p class="section-label">O que instalamos</p>
         <h2 class="section-title">Serviços com garantia técnica</h2>
         <p class="section-subtitle">Da fundação ao acabamento. Nossa equipe instala piscinas de fibra, alvenaria e vinil com total responsabilidade técnica e garantia de obra.</p>
@@ -1066,7 +1081,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section reveal-section" style="background: #111;">
+    <section class="section section-alt reveal-section">
         <p class="section-label">Dúvidas frequentes</p>
         <h2 class="section-title">Perguntas e respostas</h2>
         <p class="section-subtitle">Tire suas principais dúvidas sobre nossos produtos e serviços.</p>
@@ -1080,11 +1095,9 @@
                 <div class="faq-answer">
                     <div class="faq-answer-inner">
                         <p>Sim. Temos loja física em São Gonçalo com estoque real. Você pode retirar na hora ou verificar a disponibilidade pelo WhatsApp antes de vir.</p>
-                        <div class="faq-answer-meta">
-                            <div class="meta-row"><span class="meta-key">Endereço</span><span class="meta-val">R. Francisco Portela, 2627 – Zé Garoto, São Gonçalo – RJ</span></div>
-                            <div class="meta-row"><span class="meta-key">Horário</span><span class="meta-val">Seg–Sex: 8h às 17h30</span></div>
-                            <div class="meta-row"><span class="meta-key">Entrega</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
-                        </div>
+                        <div class="meta-row" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--color-border);"><span class="meta-key">Endereço</span><span class="meta-val">R. Francisco Portela, 2627 – Zé Garoto, São Gonçalo – RJ</span></div>
+                        <div class="meta-row"><span class="meta-key">Horário</span><span class="meta-val">Seg–Sex: 8h às 17h30</span></div>
+                        <div class="meta-row"><span class="meta-key">Entrega</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
                     </div>
                 </div>
             </div>
@@ -1157,7 +1170,6 @@
 
     <script>
         (function () {
-            // Header scroll
             var header = document.getElementById('mainHeader');
             window.addEventListener('scroll', function () {
                 if (window.scrollY > 40) {
@@ -1167,7 +1179,6 @@
                 }
             }, { passive: true });
 
-            // FAQ accordion
             var faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(function (item) {
                 var btn = item.querySelector('.faq-question');
@@ -1178,7 +1189,6 @@
                 });
             });
 
-            // Scroll reveal
             var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             var wordRevealEls = document.querySelectorAll('.word-reveal');
 
@@ -1243,21 +1253,6 @@
                         }, 120 + i * 40);
                     });
                 }
-            });
-
-            document.addEventListener('touchstart', function (e) {
-                var btn = e.target.closest('.btn-cta-main');
-                if (btn) {
-                    if (audioCtx && audioCtx.state === 'suspended') {
-                        audioCtx.resume();
-                    }
-                    playPopSound();
-                }
-            }, { passive: true });
-
-            document.addEventListener('click', function (e) {
-                var btn = e.target.closest('.btn-cta-main');
-                if (btn) playPopSound();
             });
         })();
     </script>
