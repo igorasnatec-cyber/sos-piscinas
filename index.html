@@ -331,13 +331,11 @@
             box-shadow: var(--shadow-md);
         }
 
-        .card-icon-area {
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            background: linear-gradient(135deg, #cce8f4, #e8f4fa);
+        .card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
         }
 
         .card-body {
@@ -400,13 +398,12 @@
             flex: 0 0 260px;
             background: var(--color-surface-2);
             border-radius: 14px;
-            padding: 20px;
+            overflow: hidden;
             scroll-snap-align: start;
             border: 1px solid var(--color-border);
             box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
-            gap: 12px;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
 
@@ -415,8 +412,19 @@
             box-shadow: var(--shadow-md);
         }
 
-        .service-icon {
-            font-size: 36px;
+        .service-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-body {
+            padding: 16px 18px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
         }
 
         .service-title {
@@ -458,13 +466,11 @@
             box-shadow: var(--shadow-md);
         }
 
-        .case-visual {
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 56px;
-            background: linear-gradient(135deg, #cce8f4, #e8f4fa);
+        .case-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
         }
 
         .case-body {
@@ -646,9 +652,10 @@
             gap: 8px;
         }
 
-        .footer-info-item span:first-child {
+        .footer-info-item svg {
             color: var(--color-primary);
             flex-shrink: 0;
+            margin-top: 1px;
         }
 
         .footer-bottom {
@@ -714,68 +721,25 @@
             transform: none;
         }
 
-        /* Word reveal */
-        .word-reveal {
-            overflow: hidden;
-        }
+        .word-reveal { overflow: hidden; }
+        .word-wrap { display: inline-block; overflow: hidden; vertical-align: bottom; }
+        .word-inner { display: inline-block; transform: translateY(110%); transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
+        .word-inner.is-visible { transform: translateY(0); }
 
-        .word-wrap {
-            display: inline-block;
-            overflow: hidden;
-            vertical-align: bottom;
-        }
-
-        .word-inner {
-            display: inline-block;
-            transform: translateY(110%);
-            transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .word-inner.is-visible {
-            transform: translateY(0);
-        }
-
-        /* ── REDUCED MOTION ── */
         @media (prefers-reduced-motion: reduce) {
-            .reveal-section,
-            .reveal-card,
-            .word-inner {
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
+            .reveal-section, .reveal-card, .word-inner {
+                opacity: 1 !important; transform: none !important; transition: none !important;
             }
-
-            .hero-badge::before {
-                animation: none;
-            }
+            .hero-badge::before { animation: none; }
         }
 
-        /* ── RESPONSIVE ── */
         @media (min-width: 768px) {
-            .hero {
-                padding: 100px 4vw 80px;
-            }
-
-            .hero-title {
-                letter-spacing: -3px;
-            }
-
-            .product-card {
-                flex: 0 0 300px;
-            }
-
-            .service-card {
-                flex: 0 0 300px;
-            }
-
-            .case-card {
-                flex: 0 0 320px;
-            }
-
-            .cta-actions {
-                flex-direction: row;
-                justify-content: center;
-            }
+            .hero { padding: 100px 4vw 80px; }
+            .hero-title { letter-spacing: -3px; }
+            .product-card { flex: 0 0 300px; }
+            .service-card { flex: 0 0 300px; }
+            .case-card { flex: 0 0 320px; }
+            .cta-actions { flex-direction: row; justify-content: center; }
         }
     </style>
 </head>
@@ -850,9 +814,10 @@
 
         <div class="carousel-wrapper">
             <div class="carousel">
+
                 <!-- PISCINAS -->
                 <div class="product-card reveal-card">
-                    <div class="card-icon-area">🏊</div>
+                    <img class="card-img" src="https://res.cloudinary.com/dddfulsao/image/upload/v1780965283/FL202_-_FL224_-_FL318_amzqrq.jpg" alt="Piscina de fibra azul" loading="lazy">
                     <div class="card-body">
                         <span class="card-tag">Piscinas</span>
                         <h3 class="card-title">Piscinas Residenciais</h3>
@@ -864,9 +829,10 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- AQUECEDORES -->
                 <div class="product-card reveal-card">
-                    <div class="card-icon-area">☀️</div>
+                    <img class="card-img" src="https://res.cloudinary.com/dddfulsao/image/upload/v1780965284/PHOTO-2026-06-05-14-11-38_oa779x.jpg" alt="Aquecedor de piscina" loading="lazy">
                     <div class="card-body">
                         <span class="card-tag">Aquecimento</span>
                         <h3 class="card-title">Aquecedores</h3>
@@ -878,9 +844,10 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- FILTROS E BOMBAS -->
                 <div class="product-card reveal-card">
-                    <div class="card-icon-area">⚙️</div>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&auto=format&fit=crop" alt="Filtros e bombas para piscina" loading="lazy">
                     <div class="card-body">
                         <span class="card-tag">Equipamentos</span>
                         <h3 class="card-title">Filtros e Bombas</h3>
@@ -892,9 +859,10 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- SAUNAS -->
                 <div class="product-card reveal-card">
-                    <div class="card-icon-area">🧖</div>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop" alt="Sauna de madeira interior" loading="lazy">
                     <div class="card-body">
                         <span class="card-tag">Bem-estar</span>
                         <h3 class="card-title">Saunas</h3>
@@ -906,9 +874,10 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- BANHEIRAS -->
                 <div class="product-card reveal-card">
-                    <div class="card-icon-area">🛁</div>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=600&q=80&auto=format&fit=crop" alt="Banheira de hidromassagem spa" loading="lazy">
                     <div class="card-body">
                         <span class="card-tag">Hidromassagem</span>
                         <h3 class="card-title">Banheiras e Spas</h3>
@@ -920,9 +889,10 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- ACESSÓRIOS -->
                 <div class="product-card reveal-card">
-                    <div class="card-icon-area">🧹</div>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?w=600&q=80&auto=format&fit=crop" alt="Acessórios e limpeza de piscina" loading="lazy">
                     <div class="card-body">
                         <span class="card-tag">Acessórios</span>
                         <h3 class="card-title">Acessórios para Piscina</h3>
@@ -934,9 +904,10 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- REDE DE PROTEÇÃO -->
                 <div class="product-card reveal-card">
-                    <div class="card-icon-area">🛡️</div>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?w=600&q=80&auto=format&fit=crop" alt="Rede de proteção para piscina" loading="lazy">
                     <div class="card-body">
                         <span class="card-tag">Segurança</span>
                         <h3 class="card-title">Rede de Proteção</h3>
@@ -948,9 +919,10 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- CHURRASQUEIRAS -->
                 <div class="product-card reveal-card">
-                    <div class="card-icon-area">🔥</div>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80&auto=format&fit=crop" alt="Churrasqueira área gourmet" loading="lazy">
                     <div class="card-body">
                         <span class="card-tag">Lazer</span>
                         <h3 class="card-title">Churrasqueiras</h3>
@@ -962,6 +934,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -974,57 +947,73 @@
 
         <div class="carousel-wrapper">
             <div class="carousel">
+
                 <div class="service-card reveal-card">
-                    <div class="service-icon">🏗️</div>
-                    <h3 class="service-title">Instalação de Piscinas</h3>
-                    <p class="service-desc">Da fundação ao acabamento. Nossa equipe instala piscinas de fibra, alvenaria e vinil com total responsabilidade técnica e garantia de obra.</p>
-                    <div class="service-details">
-                        <div class="meta-row"><span class="meta-key">Processo</span><span class="meta-val">1. Você nos chama pelo WhatsApp</span></div>
-                        <div class="meta-row"><span class="meta-key"></span><span class="meta-val">2. Enviamos o orçamento detalhado</span></div>
-                        <div class="meta-row"><span class="meta-key"></span><span class="meta-val">3. Agendamos a visita técnica</span></div>
-                        <div class="meta-row"><span class="meta-key"></span><span class="meta-val">4. Executamos com garantia</span></div>
+                    <img class="service-img" src="https://res.cloudinary.com/dddfulsao/image/upload/v1780965284/20200306_155307_dvzhwr.jpg" alt="Instalação de piscina" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Instalação de Piscinas</h3>
+                        <p class="service-desc">Da fundação ao acabamento. Nossa equipe instala piscinas de fibra, alvenaria e vinil com total responsabilidade técnica e garantia de obra.</p>
+                        <div class="service-details">
+                            <div class="meta-row"><span class="meta-key">Processo</span><span class="meta-val">1. Você nos chama pelo WhatsApp</span></div>
+                            <div class="meta-row"><span class="meta-key"></span><span class="meta-val">2. Enviamos o orçamento detalhado</span></div>
+                            <div class="meta-row"><span class="meta-key"></span><span class="meta-val">3. Agendamos a visita técnica</span></div>
+                            <div class="meta-row"><span class="meta-key"></span><span class="meta-val">4. Executamos com garantia</span></div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="service-card reveal-card">
-                    <div class="service-icon">☀️</div>
-                    <h3 class="service-title">Instalação de Aquecedores</h3>
-                    <p class="service-desc">Instalação técnica de aquecedores de diversos tipos. Técnicos treinados com materiais de qualidade e garantia no serviço.</p>
-                    <div class="service-details">
-                        <div class="meta-row"><span class="meta-key">Prazo</span><span class="meta-val">Agendamento em até 48h</span></div>
-                        <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">Inclusa na instalação</span></div>
-                        <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
+                    <img class="service-img" src="https://res.cloudinary.com/dddfulsao/image/upload/v1780965284/PHOTO-2026-06-05-14-11-38_oa779x.jpg" alt="Instalação de aquecedor de piscina" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Instalação de Aquecedores</h3>
+                        <p class="service-desc">Instalação técnica de aquecedores de diversos tipos. Técnicos treinados com materiais de qualidade e garantia no serviço.</p>
+                        <div class="service-details">
+                            <div class="meta-row"><span class="meta-key">Prazo</span><span class="meta-val">Agendamento em até 48h</span></div>
+                            <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">Inclusa na instalação</span></div>
+                            <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Todo o Rio de Janeiro</span></div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="service-card reveal-card">
-                    <div class="service-icon">🔧</div>
-                    <h3 class="service-title">Troca de Equipamentos</h3>
-                    <p class="service-desc">Bomba quebrou ou filtro com problema? Nossos técnicos instalam e substituem equipamentos com agilidade em toda a região.</p>
-                    <div class="service-details">
-                        <div class="meta-row"><span class="meta-key">Atendimento</span><span class="meta-val">Rápido e sem burocracia</span></div>
-                        <div class="meta-row"><span class="meta-key">Estoque</span><span class="meta-val">Produto + instalação no mesmo dia</span></div>
-                        <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">No serviço executado</span></div>
+                    <img class="service-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&auto=format&fit=crop" alt="Troca de equipamentos técnicos" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Troca de Equipamentos</h3>
+                        <p class="service-desc">Bomba quebrou ou filtro com problema? Nossos técnicos instalam e substituem equipamentos com agilidade em toda a região.</p>
+                        <div class="service-details">
+                            <div class="meta-row"><span class="meta-key">Atendimento</span><span class="meta-val">Rápido e sem burocracia</span></div>
+                            <div class="meta-row"><span class="meta-key">Estoque</span><span class="meta-val">Produto + instalação no mesmo dia</span></div>
+                            <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">No serviço executado</span></div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="service-card reveal-card">
-                    <div class="service-icon">🧖</div>
-                    <h3 class="service-title">Saunas e Hidromassagem</h3>
-                    <p class="service-desc">Instalamos saunas secas, saunas a vapor e banheiras de hidromassagem. Tudo executado por equipe técnica especializada.</p>
-                    <div class="service-details">
-                        <div class="meta-row"><span class="meta-key">Visita técnica</span><span class="meta-val">Grátis para orçamento</span></div>
-                        <div class="meta-row"><span class="meta-key">Execução</span><span class="meta-val">Com garantia</span></div>
-                        <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Grande RJ</span></div>
+                    <img class="service-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop" alt="Sauna e hidromassagem" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Saunas e Hidromassagem</h3>
+                        <p class="service-desc">Instalamos saunas secas, saunas a vapor e banheiras de hidromassagem. Tudo executado por equipe técnica especializada.</p>
+                        <div class="service-details">
+                            <div class="meta-row"><span class="meta-key">Visita técnica</span><span class="meta-val">Grátis para orçamento</span></div>
+                            <div class="meta-row"><span class="meta-key">Execução</span><span class="meta-val">Com garantia</span></div>
+                            <div class="meta-row"><span class="meta-key">Cobertura</span><span class="meta-val">Grande RJ</span></div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="service-card reveal-card">
-                    <div class="service-icon">🔥</div>
-                    <h3 class="service-title">Instalação de Churrasqueiras</h3>
-                    <p class="service-desc">Complete sua área de lazer com a churrasqueira ideal instalada por quem entende. Projetos personalizados para o seu espaço.</p>
-                    <div class="service-details">
-                        <div class="meta-row"><span class="meta-key">Modelos</span><span class="meta-val">Alvenaria e pré-moldada</span></div>
-                        <div class="meta-row"><span class="meta-key">Projeto</span><span class="meta-val">Personalizado para seu espaço</span></div>
-                        <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">Na execução</span></div>
+                    <img class="service-img" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80&auto=format&fit=crop" alt="Instalação de churrasqueira" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Instalação de Churrasqueiras</h3>
+                        <p class="service-desc">Complete sua área de lazer com a churrasqueira ideal instalada por quem entende. Projetos personalizados para o seu espaço.</p>
+                        <div class="service-details">
+                            <div class="meta-row"><span class="meta-key">Modelos</span><span class="meta-val">Alvenaria e pré-moldada</span></div>
+                            <div class="meta-row"><span class="meta-key">Projeto</span><span class="meta-val">Personalizado para seu espaço</span></div>
+                            <div class="meta-row"><span class="meta-key">Garantia</span><span class="meta-val">Na execução</span></div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1037,8 +1026,9 @@
 
         <div class="carousel-wrapper">
             <div class="carousel">
+
                 <div class="case-card reveal-card">
-                    <div class="case-visual">🏊</div>
+                    <img class="case-img" src="https://res.cloudinary.com/dddfulsao/image/upload/v1780965284/foto_631_hhqo6r.jpg" alt="Piscina de fibra instalada São Gonçalo" loading="lazy">
                     <div class="case-body">
                         <span class="case-tag">Instalação</span>
                         <h3 class="case-title">Piscina de Fibra — São Gonçalo</h3>
@@ -1050,8 +1040,9 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="case-card reveal-card">
-                    <div class="case-visual">☀️</div>
+                    <img class="case-img" src="https://res.cloudinary.com/dddfulsao/image/upload/v1780965284/PHOTO-2026-06-05-14-11-38_oa779x.jpg" alt="Aquecedor instalado Niterói" loading="lazy">
                     <div class="case-body">
                         <span class="case-tag">Aquecimento</span>
                         <h3 class="case-title">Aquecedor — Niterói</h3>
@@ -1063,8 +1054,9 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="case-card reveal-card">
-                    <div class="case-visual">🏡</div>
+                    <img class="case-img" src="https://res.cloudinary.com/dddfulsao/image/upload/v1780965283/FL202_-_FL224_-_FL318_amzqrq.jpg" alt="Área de lazer completa com piscina" loading="lazy">
                     <div class="case-body">
                         <span class="case-tag">Projeto completo</span>
                         <h3 class="case-title">Área de Lazer Completa</h3>
@@ -1076,6 +1068,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1151,15 +1144,15 @@
         </div>
         <div class="footer-info">
             <div class="footer-info-item">
-                <span>📍</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 <span>R. Francisco Portela, 2627 – Zé Garoto, São Gonçalo – RJ</span>
             </div>
             <div class="footer-info-item">
-                <span>🕐</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span>Seg–Sex: 8h às 17h30</span>
             </div>
             <div class="footer-info-item">
-                <span>📱</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 <span>(21) 97194-5857</span>
             </div>
         </div>
@@ -1191,13 +1184,9 @@
 
             var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             var wordRevealEls = document.querySelectorAll('.word-reveal');
-
             if (prefersReduced) return;
 
-            var observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            var observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
 
             var revealObserver = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
@@ -1219,9 +1208,7 @@
                     var visible = entries.filter(function (e) { return e.isIntersecting; });
                     visible.forEach(function (entry, i) {
                         var card = entry.target;
-                        setTimeout(function () {
-                            card.classList.add('is-visible');
-                        }, i * 80);
+                        setTimeout(function () { card.classList.add('is-visible'); }, i * 80);
                         cardObserver.unobserve(card);
                     });
                 }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
@@ -1233,9 +1220,7 @@
                     if (entry.isIntersecting) {
                         var words = entry.target.querySelectorAll('.word-inner');
                         words.forEach(function (word, i) {
-                            setTimeout(function () {
-                                word.classList.add('is-visible');
-                            }, i * 40);
+                            setTimeout(function () { word.classList.add('is-visible'); }, i * 40);
                         });
                         wordObserver.unobserve(entry.target);
                     }
@@ -1248,9 +1233,7 @@
                 } else {
                     var words = el.querySelectorAll('.word-inner');
                     words.forEach(function (word, i) {
-                        setTimeout(function () {
-                            word.classList.add('is-visible');
-                        }, 120 + i * 40);
+                        setTimeout(function () { word.classList.add('is-visible'); }, 120 + i * 40);
                     });
                 }
             });
