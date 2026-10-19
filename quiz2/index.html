@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18291547002"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18291547002');
+  // OPCIONAL (funil por etapa no GA4): descomente e troque pelo seu ID de medição
+  // gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0077a8">
+<meta name="robots" content="noindex, follow">
+<title>Encontre o produto certo para sua piscina | SOS Piscinas</title>
+<meta name="description" content="Responda 4 perguntas rápidas e fale direto no WhatsApp com a SOS Piscinas. Loja física em São Gonçalo, +20 anos, entrega em todo o Rio de Janeiro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://i.imgur.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --color-bg:#eef6f9;--color-surface:#f4f9fb;--color-surface-2:#ffffff;--color-surface-alt:#e2eff5;
+  --color-border:oklch(0.45 0.05 220 / 0.13);
+  --color-text:#0f2a38;--color-text-muted:#3d6174;--color-text-faint:#7aa4b5;
+  --color-primary:#0077a8;--color-primary-hover:#005b82;
+  --color-primary-light:rgba(0,119,168,0.10);--color-primary-border:rgba(0,119,168,0.30);
+  --color-wa:#25D366;--color-wa-hover:#1fb857;
+  --shadow-sm:0 1px 3px oklch(0.30 0.05 220 / 0.09);
+  --shadow-md:0 4px 16px oklch(0.30 0.05 220 / 0.11);
+  --shadow-lg:0 12px 40px oklch(0.30 0.05 220 / 0.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:linear-gradient(160deg,#cce8f4 0%,#eef6f9 45%) fixed;color:var(--color-text);-webkit-font-smoothing:antialiased;min-height:100svh;display:flex;flex-direction:column}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(238,246,249,.94);backdrop-filter:blur(8px);box-shadow:var(--shadow-sm)}
+.topbar-in{max-width:760px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:22px;font-weight:900;color:var(--color-primary);letter-spacing:-1.2px;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.logo-dot{width:8px;height:8px;background:var(--color-primary);border-radius:50%;margin-bottom:2px}
+.topbar-note{font-size:12px;font-weight:600;color:var(--color-text-muted)}
+.progress{height:5px;background:var(--color-surface-alt)}
+.progress-bar{height:100%;width:20%;background:linear-gradient(90deg,#00a6d6,var(--color-primary));border-radius:0 4px 4px 0;transition:width .45s cubic-bezier(.16,1,.3,1)}
+
+main{flex:1;width:100%;max-width:760px;margin:0 auto;padding:22px 18px 40px}
+.step{display:none}
+.step.active{display:block;animation:in .38s cubic-bezier(.16,1,.3,1)}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--color-primary-light);border:1px solid var(--color-primary-border);color:var(--color-primary);padding:6px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px}
+.badge::before{content:'●';font-size:8px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(28px,7vw,44px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin-bottom:12px}
+h1 .hl{color:var(--color-primary)}
+.lead{font-size:clamp(15px,3.6vw,18px);line-height:1.55;color:var(--color-text-muted);margin-bottom:16px;max-width:560px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--color-text);background:var(--color-surface-2);border:1px solid var(--color-border);box-shadow:var(--shadow-sm);padding:6px 10px;border-radius:999px}
+.chip svg{color:var(--color-primary);flex-shrink:0}
+
+.qmeta{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;min-height:28px}
+.qcount{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-primary)}
+.back{background:none;border:none;color:var(--color-text-muted);font-size:13px;font-weight:600;cursor:pointer;padding:6px 4px;display:none}
+.back:hover{color:var(--color-primary)}
+.back.show{display:inline-block}
+h2{font-size:clamp(22px,5.4vw,32px);font-weight:900;letter-spacing:-.9px;line-height:1.15;margin-bottom:6px;outline:none}
+.qsub{font-size:14px;color:var(--color-text-muted);line-height:1.5;margin-bottom:18px}
+.qsub b{color:var(--color-text)}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.opt-card{position:relative;text-align:left;background:var(--color-surface-2);border:2px solid var(--color-border);border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:var(--shadow-sm);transition:border-color .15s,box-shadow .15s,transform .1s;display:flex;flex-direction:column;color:inherit}
+.opt-card:hover{border-color:var(--color-primary-border);box-shadow:var(--shadow-md)}
+.opt-card:active{transform:scale(.97)}
+.opt-card:focus-visible,.opt-row:focus-visible,.cta:focus-visible,.link-btn:focus-visible,.back:focus-visible{outline:3px solid var(--color-primary);outline-offset:2px}
+.opt-img{aspect-ratio:4/3;background:var(--color-surface-alt);overflow:hidden}
+.opt-img img{width:100%;height:100%;object-fit:cover}
+.opt-txt{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}
+.opt-label{font-size:15px;font-weight:800;line-height:1.2}
+.opt-sub{font-size:12px;color:var(--color-text-muted);line-height:1.35}
+.opt-card.selected,.opt-row.selected{border-color:var(--color-primary);background:var(--color-primary-light);box-shadow:var(--shadow-md)}
+.opt-card.selected::after{content:'';position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:var(--color-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/16px no-repeat;box-shadow:var(--shadow-md)}
+
+.list{display:flex;flex-direction:column;gap:10px}
+.opt-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:60px;padding:14px 16px;text-align:left;font-size:16px;font-weight:700;color:var(--color-text);background:var(--color-surface-2);border:2px solid var(--color-border);border-radius:14px;cursor:pointer;box-shadow:var(--shadow-sm);transition:border-color .15s,box-shadow .15s,transform .1s}
+.opt-row:hover{border-color:var(--color-primary-border);box-shadow:var(--shadow-md)}
+.opt-row:active{transform:scale(.98)}
+.opt-row small{display:block;font-size:12px;font-weight:500;color:var(--color-text-muted);margin-top:2px}
+.opt-row svg{color:var(--color-primary);flex-shrink:0}
+
+.loading{text-align:center;padding:60px 10px}
+.spinner{width:54px;height:54px;border-radius:50%;border:5px solid var(--color-primary-light);border-top-color:var(--color-primary);margin:0 auto 22px;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{font-size:17px;font-weight:700;min-height:26px}
+.loading small{display:block;margin-top:8px;font-size:13px;color:var(--color-text-muted)}
+
+.res-hero{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:16px}
+.res-img{aspect-ratio:16/9;background:var(--color-surface-alt)}
+.res-img img{width:100%;height:100%;object-fit:cover}
+.res-body{padding:18px}
+.res-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#0b7a3b;background:rgba(37,211,102,.14);padding:5px 10px;border-radius:999px;margin-bottom:10px}
+.res-body h2{margin-bottom:8px}
+.res-lead{font-size:15px;line-height:1.55;color:var(--color-text-muted);margin-bottom:14px}
+.checks{list-style:none;display:flex;flex-direction:column;gap:9px}
+.checks li{display:flex;gap:10px;font-size:14px;line-height:1.45;font-weight:500}
+.checks svg{flex-shrink:0;margin-top:2px;color:var(--color-primary)}
+.proof{display:flex;gap:12px;align-items:center;background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:14px;padding:10px;box-shadow:var(--shadow-sm);margin-bottom:14px}
+.proof img{width:92px;height:68px;object-fit:cover;border-radius:10px;flex-shrink:0;background:var(--color-surface-alt)}
+.proof b{display:block;font-size:13px}
+.proof span{font-size:12px;color:var(--color-text-muted);line-height:1.4}
+.summary{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.summary span{font-size:12px;font-weight:600;background:var(--color-primary-light);border:1px solid var(--color-primary-border);color:var(--color-primary);padding:5px 10px;border-radius:999px}
+.note{margin-bottom:14px}
+.note label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+.note textarea{width:100%;min-height:68px;resize:vertical;font:inherit;font-size:15px;color:var(--color-text);background:var(--color-surface-2);border:2px solid var(--color-border);border-radius:12px;padding:10px 12px}
+.note textarea:focus{outline:none;border-color:var(--color-primary)}
+.cta-bar{position:sticky;bottom:0;z-index:20;padding:12px 0 14px;background:linear-gradient(180deg,rgba(238,246,249,0),#eef6f9 28%)}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--color-wa);color:#fff;font-size:17px;font-weight:800;text-decoration:none;padding:18px 20px;border-radius:14px;box-shadow:0 8px 28px rgba(37,211,102,.4);transition:background .2s,transform .1s;animation:glow 2.6s ease-in-out infinite}
+.cta:hover{background:var(--color-wa-hover)}
+.cta:active{transform:scale(.98)}
+@keyframes glow{0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.35)}50%{box-shadow:0 8px 40px rgba(37,211,102,.6)}}
+.micro{margin-top:10px;text-align:center;font-size:12px;line-height:1.5;color:var(--color-text-muted)}
+.micro b{color:var(--color-text)}
+.hours{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.hours i{width:8px;height:8px;border-radius:50%;background:var(--color-wa);display:inline-block}
+.hours.off i{background:#e0a100}
+.link-btn{background:none;border:none;color:var(--color-text-muted);font-size:13px;font-weight:600;text-decoration:underline;cursor:pointer;padding:8px}
+.link-btn:hover{color:var(--color-primary)}
+.center{text-align:center}
+.direct{margin-top:26px;text-align:center;font-size:13px;color:var(--color-text-muted)}
+.direct a{color:var(--color-primary);font-weight:700}
+
+footer{background:var(--color-surface-alt);border-top:1px solid var(--color-border);padding:24px 18px 30px}
+.foot{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--color-text-muted);line-height:1.5}
+.foot b{font-size:14px;color:var(--color-primary);font-weight:900;letter-spacing:-.4px}
+.foot small{margin-top:6px;color:var(--color-text-faint)}
+
+@media(min-width:720px){
+  main{padding-top:36px}
+  .grid.g4{grid-template-columns:repeat(4,1fr)}
+  .grid.g2d{grid-template-columns:repeat(2,1fr)}
+  .res-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:start}
+  .res-wrap .res-hero{margin-bottom:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .step.active,.cta,.badge::before,.spinner{animation:none!important}
+  .progress-bar{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="logo"><span class="logo-dot"></span>SOS Piscinas</div>
+    <span class="topbar-note">Loja física em São Gonçalo · RJ</span>
+  </div>
+  <div class="progress" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20" id="progress"><div class="progress-bar" id="progressBar"></div></div>
+</header>
+
+<main>
+
+  <section class="step active" data-step="0" aria-labelledby="t0">
+    <div id="intro">
+      <div class="badge">Orçamento grátis · Sem compromisso</div>
+      <h1>Ache o produto certo para a sua <span class="hl">piscina</span> em 4 toques</h1>
+      <p class="lead">Responda rápido e vá direto para o WhatsApp da loja com o pedido já montado. Sem formulário, sem cadastro.</p>
+      <div class="chips">
+        <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>+20 anos de mercado</span>
+        <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Estoque real na loja</span>
+        <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Instalação com garantia</span>
+        <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Entrega em todo o RJ</span>
+      </div>
+    </div>
+    <div class="qmeta"><span class="qcount">Pergunta 1 de 4</span><button type="button" class="back" data-back>← Voltar</button></div>
+    <h2 id="t0" tabindex="-1">O que você está procurando?</h2>
+    <p class="qsub">Toque na opção que mais combina com você.</p>
+    <div class="grid g4" id="gridProduct"></div>
+  </section>
+
+  <section class="step" data-step="1" aria-labelledby="t1">
+    <div class="qmeta"><span class="qcount">Pergunta 2 de 4</span><button type="button" class="back" data-back>← Voltar</button></div>
+    <h2 id="t1" tabindex="-1">Do que você precisa?</h2>
+    <p class="qsub">Você escolheu: <b id="chosenProduct"></b></p>
+    <div class="grid g2d" id="gridNeed"></div>
+  </section>
+
+  <section class="step" data-step="2" aria-labelledby="t2">
+    <div class="qmeta"><span class="qcount">Pergunta 3 de 4</span><button type="button" class="back" data-back>← Voltar</button></div>
+    <h2 id="t2" tabindex="-1">Em que região você está?</h2>
+    <p class="qsub">Atendemos todo o Rio de Janeiro. Isso ajuda a calcular entrega e instalação.</p>
+    <div class="list" id="listRegion"></div>
+  </section>
+
+  <section class="step" data-step="3" aria-labelledby="t3">
+    <div class="qmeta"><span class="qcount">Pergunta 4 de 4</span><button type="button" class="back" data-back>← Voltar</button></div>
+    <h2 id="t3" tabindex="-1">Para quando você precisa?</h2>
+    <p class="qsub">Assim o atendente já chega com a resposta certa para o seu momento.</p>
+    <div class="list" id="listTime"></div>
+  </section>
+
+  <section class="step" data-step="4" aria-live="polite">
+    <div class="loading">
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="loadingText">Analisando suas respostas…</p>
+      <small>Só mais um instante</small>
+    </div>
+  </section>
+
+  <section class="step" data-step="5" aria-labelledby="t5">
+    <div class="qmeta"><span class="qcount">Seu resultado</span><button type="button" class="back" data-back>← Voltar</button></div>
+    <div class="res-wrap">
+      <div class="res-hero">
+        <div class="res-img"><img id="resImg" src="" alt="" width="640" height="360" decoding="async"></div>
+        <div class="res-body">
+          <span class="res-tag">Trabalhamos com isso</span>
+          <h2 id="t5" tabindex="-1">Resultado</h2>
+          <p class="res-lead" id="resLead"></p>
+          <ul class="checks" id="resChecks"></ul>
+        </div>
+      </div>
+      <div>
+        <div class="proof">
+          <img id="proofImg" src="" alt="" width="92" height="68" loading="lazy" decoding="async">
+          <div><b id="proofTitle"></b><span>Obra executada pela equipe técnica da SOS Piscinas.</span></div>
+        </div>
+        <div class="summary" id="resSummary" aria-label="Resumo do seu pedido"></div>
+        <div class="note">
+          <label for="noteInput">Quer contar mais algum detalhe? <span style="font-weight:500;color:var(--color-text-muted)">(opcional)</span></label>
+          <textarea id="noteInput" maxlength="200" placeholder="Ex.: medidas, modelo ou marca que você já viu"></textarea>
+        </div>
+        <div class="cta-bar">
+          <a id="waFinal" class="cta" data-wa="quiz_resultado" href="#" target="_blank" rel="noopener">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Receber meu orçamento grátis
+          </a>
+          <p class="micro"><span class="hours" id="hoursBadge"><i></i><span id="hoursText"></span></span><br>Sem compromisso · Garantia técnica na instalação</p>
+        </div>
+        <div class="center"><button type="button" class="link-btn" id="restart">Refazer o questionário</button></div>
+      </div>
+    </div>
+  </section>
+
+  <p class="direct" id="directWrap">Prefere falar agora? <a href="https://wa.me/5521971945857?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SOS%20Piscinas%20e%20quero%20um%20or%C3%A7amento.%20(Ref%3A%20Q1-direto)" data-wa="quiz_direto" target="_blank" rel="noopener">Chame direto no WhatsApp</a></p>
+
+  <noscript><p class="direct">Ative o JavaScript para responder o questionário ou <a href="https://wa.me/5521971945857?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">chame direto no WhatsApp</a>.</p></noscript>
+</main>
+
+<footer>
+  <div class="foot">
+    <b>SOS Piscinas</b>
+    <span>R. Francisco Portela, 2627 – Zé Garoto, São Gonçalo – RJ</span>
+    <span>Seg–Sex: 8h às 17h30 · (21) 97194-5857</span>
+    <span>Especialistas em piscinas, aquecedores, saunas e lazer há mais de 20 anos no Rio de Janeiro.</span>
+    <small>Suas respostas servem apenas para montar o seu atendimento. Não pedimos nome, telefone ou e-mail nesta página.</small>
+    <small>© 2026 SOS Piscinas. Todos os direitos reservados.</small>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var CFG = {
+    WA_NUMBER: '5521971945857',
+    SEND_TO: 'AW-18291547002/TTUVCJ2UjMkcEPq2i5JE',
+    VALUE: 1.0,
+    CURRENCY: 'BRL',
+    VARIANT: 'Q1'
+  };
+
+  var IMG = 'https://i.imgur.com/';
+  var PRODUCTS = [
+    { id: 'piscina', label: 'Piscina', sub: 'Fibra, alvenaria ou vinil', img: 'NgukCd9', alt: 'Piscina residencial',
+      headline: 'Piscinas de fibra, alvenaria e vinil',
+      lead: 'Vendemos e instalamos piscinas de diversos tamanhos e modelos para residências e condomínios.',
+      bullets: ['Fibra de vidro, alvenaria revestida e vinil', 'Atendimento para residências e condomínios', 'Instalação com responsabilidade técnica e garantia de obra'],
+      proofImg: 'GLh14gR', proofAlt: 'Piscina de fibra instalada em São Gonçalo', proofTitle: 'Piscina de fibra — São Gonçalo' },
+    { id: 'aquecedor', label: 'Aquecedor', sub: 'Use a piscina o ano todo', img: 'pMcZcyV', alt: 'Aquecedor de piscina',
+      headline: 'Aquecedores para piscina',
+      lead: 'Aqueça sua piscina com conforto e economia e use o ano inteiro, em qualquer época.',
+      bullets: ['Economia de até 90% na conta de energia', 'Instalação incluída no orçamento', 'Garantia técnica no serviço'],
+      proofImg: 'b6XsLXK', proofAlt: 'Aquecedor instalado em Niterói', proofTitle: 'Aquecedor — Niterói' },
+    { id: 'filtro', label: 'Filtro e bomba', sub: 'Dancor, Nautilus, Albacete', img: 'jftSHIK', alt: 'Filtro e bomba para piscina',
+      headline: 'Filtros e bombas de marcas líderes',
+      lead: 'Filtros de alta performance e bombas de circulação, com produtos em estoque para retirada imediata.',
+      bullets: ['Marcas como Dancor, Nautilus e Albacete', 'Retirada imediata na loja em São Gonçalo', 'Entrega em todo o RJ e instalação disponível'],
+      proofImg: 'BlF9p5f', proofAlt: 'Troca de equipamento no Rio de Janeiro', proofTitle: 'Troca de equipamento — Rio de Janeiro' },
+    { id: 'sauna', label: 'Sauna', sub: 'Seca ou a vapor', img: 'RdTcfj9', alt: 'Sauna',
+      headline: 'Saunas secas e a vapor',
+      lead: 'Transforme sua área de lazer com o relaxamento que você merece, sem sair de casa.',
+      bullets: ['Seca (elétrica ou a lenha) e a vapor', 'Fabricação e instalação sob medida', 'Instalação por equipe técnica especializada'],
+      proofImg: 'HkewpW5', proofAlt: 'Área de lazer completa com piscina', proofTitle: 'Área de lazer completa' },
+    { id: 'spa', label: 'Spa e banheira', sub: 'Hidromassagem em casa', img: 'kqCkMFr', alt: 'Banheira e spa hidromassagem',
+      headline: 'Banheiras, spas e hidromassagem',
+      lead: 'Hidromassagem no conforto da sua casa, com geradores de vapor Albacete para relaxamento e saúde muscular.',
+      bullets: ['Modelos individual e duplo', 'Instalação técnica completa', 'Pós-venda incluso'],
+      proofImg: 'HkewpW5', proofAlt: 'Área de lazer completa com piscina', proofTitle: 'Área de lazer completa' },
+    { id: 'rede', label: 'Rede de proteção', sub: 'Crianças e pets seguros', img: 'g5S1mZR', alt: 'Rede de proteção para piscina',
+      headline: 'Redes de proteção para piscina',
+      lead: 'Segurança para crianças e pets sem abrir mão da estética da sua piscina.',
+      bullets: ['Proteção para crianças e animais', 'Instalação sob medida para qualquer formato', 'Atendimento em todo o Rio de Janeiro'],
+      proofImg: 'dKJIcBj', proofAlt: 'Instalação de piscina', proofTitle: 'Instalação executada pela equipe técnica' },
+    { id: 'churrasqueira', label: 'Churrasqueira', sub: 'Alvenaria, pré-moldada, inox', img: '3TxABke', alt: 'Churrasqueira área gourmet',
+      headline: 'Churrasqueiras para a sua área de lazer',
+      lead: 'Complete sua área de lazer com a churrasqueira ideal. Vendemos e instalamos modelos residenciais.',
+      bullets: ['Alvenaria, pré-moldada e inox', 'Instalação por equipe técnica especializada', 'Projetos personalizados para o seu espaço'],
+      proofImg: 'vW9KTUQ', proofAlt: 'Instalação de churrasqueira', proofTitle: 'Instalação de churrasqueira' },
+    { id: 'lazer', label: 'Área de lazer completa', sub: 'Piscina + churrasqueira + mais', img: 'HkewpW5', alt: 'Área de lazer completa com piscina',
+      headline: 'Projeto completo de área de lazer',
+      lead: 'Piscina, aquecedor, churrasqueira e iluminação em um projeto personalizado, com execução própria.',
+      bullets: ['Projeto 100% personalizado', 'Equipe própria e treinada', 'Atendimento em todo o Rio de Janeiro'],
+      proofImg: 'GLh14gR', proofAlt: 'Piscina de fibra instalada em São Gonçalo', proofTitle: 'Piscina de fibra — São Gonçalo' }
+  ];
+  var NEEDS = [
+    { id: 'instalacao', label: 'Produto + instalação', sub: 'Equipe técnica com garantia', img: 'dKJIcBj', alt: 'Instalação de piscina' },
+    { id: 'produto', label: 'Só o produto', sub: 'Retirar na loja ou receber em casa', img: 'jftSHIK', alt: 'Filtro e bomba para piscina' },
+    { id: 'troca', label: 'Trocar um equipamento', sub: 'Bomba, filtro e acessórios', img: 'BlF9p5f', alt: 'Troca de equipamentos' },
+    { id: 'projeto', label: 'Projeto sob medida', sub: 'Personalizado para o seu espaço', img: 'vW9KTUQ', alt: 'Projeto personalizado de churrasqueira' }
+  ];
+  var REGIONS = [
+    { id: 'sao-goncalo', label: 'São Gonçalo', sub: 'Onde fica a nossa loja' },
+    { id: 'niteroi', label: 'Niterói' },
+    { id: 'capital', label: 'Rio de Janeiro (capital)' },
+    { id: 'lagos-serrana', label: 'Região dos Lagos ou Serrana' },
+    { id: 'outra', label: 'Outra cidade do RJ' }
+  ];
+  var TIMES = [
+    { id: 'urgente', label: 'Preciso para esta semana' },
+    { id: 'proximas-semanas', label: 'Nas próximas semanas' },
+    { id: 'pesquisando', label: 'Estou pesquisando preços' }
+  ];
+
+  var QKEYS = ['product', 'need', 'region', 'time'];
+  var LISTS = { product: PRODUCTS, need: NEEDS, region: REGIONS, time: TIMES };
+  var state = { step: 0, answers: {} };
+  var loadTimer = null, loadTick = null, advTimer = null, lastConv = 0, locked = false;
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var stepEls = $$('[data-step]');
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function track(name, params) {
+    if (typeof gtag !== 'function') return;
+    var p = params || {};
+    p.variant = CFG.VARIANT;
+    gtag('event', name, p);
+  }
+
+  function fireConversion(source) {
+    var now = Date.now();
+    if (now - lastConv < 1500) return;
+    lastConv = now;
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { send_to: CFG.SEND_TO, value: CFG.VALUE, currency: CFG.CURRENCY });
+      track('whatsapp_click', {
+        click_source: source,
+        product: state.answers.product || '',
+        need: state.answers.need || '',
+        region: state.answers.region || '',
+        timeframe: state.answers.time || ''
+      });
+    }
+  }
+
+  function find(list, id) {
+    for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
+    return null;
+  }
+
+  function el(tag, cls, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+
+  function cardBtn(key, item) {
+    var b = el('button', 'opt-card');
+    b.type = 'button';
+    b.setAttribute('data-key', key);
+    b.setAttribute('data-val', item.id);
+    b.setAttribute('aria-pressed', 'false');
+    var im = el('span', 'opt-img');
+    var img = document.createElement('img');
+    img.src = IMG + item.img + '.jpg';
+    img.alt = item.alt;
+    img.width = 400; img.height = 300;
+    img.decoding = 'async';
+    if (key === 'need') img.loading = 'lazy';
+    im.appendChild(img);
+    var tx = el('span', 'opt-txt');
+    tx.appendChild(el('span', 'opt-label', item.label));
+    if (item.sub) tx.appendChild(el('span', 'opt-sub', item.sub));
+    b.appendChild(im); b.appendChild(tx);
+    return b;
+  }
+
+  var chevron = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>';
+  function rowBtn(key, item) {
+    var b = el('button', 'opt-row', '<span>' + item.label + (item.sub ? '<small>' + item.sub + '</small>' : '') + '</span>' + chevron);
+    b.type = 'button';
+    b.setAttribute('data-key', key);
+    b.setAttribute('data-val', item.id);
+    b.setAttribute('aria-pressed', 'false');
+    return b;
+  }
+
+  PRODUCTS.forEach(function (p) { $('#gridProduct').appendChild(cardBtn('product', p)); });
+  NEEDS.forEach(function (n) { $('#gridNeed').appendChild(cardBtn('need', n)); });
+  REGIONS.forEach(function (r) { $('#listRegion').appendChild(rowBtn('region', r)); });
+  TIMES.forEach(function (t) { $('#listTime').appendChild(rowBtn('time', t)); });
+
+  function valid(step) {
+    var a = state.answers;
+    if (step <= 0) return true;
+    if (step === 1) return !!a.product;
+    if (step === 2) return !!(a.product && a.need);
+    if (step === 3) return !!(a.product && a.need && a.region);
+    if (step === 5) return !!(a.product && a.need && a.region && a.time);
+    return false;
+  }
+
+  function showStep(i) {
+    state.step = i;
+    stepEls.forEach(function (s) {
+      var on = Number(s.getAttribute('data-step')) === i;
+      s.classList.toggle('active', on);
+    });
+    var pct = i <= 3 ? (i + 1) * 20 : (i === 4 ? 90 : 100);
+    $('#progressBar').style.width = pct + '%';
+    $('#progress').setAttribute('aria-valuenow', String(pct));
+    $$('[data-back]').forEach(function (b) { b.classList.toggle('show', i > 0 && i !== 4); });
+    $('#directWrap').style.display = i === 5 ? 'none' : '';
+    if (i <= 3) {
+      var key = QKEYS[i];
+      $$('[data-key="' + key + '"]').forEach(function (b) {
+        var on = b.getAttribute('data-val') === state.answers[key];
+        b.classList.toggle('selected', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      if (i === 1) {
+        var pr = find(PRODUCTS, state.answers.product);
+        $('#chosenProduct').textContent = pr ? pr.label : '';
+      }
+    }
+    window.scrollTo(0, 0);
+    var h = $('[data-step="' + i + '"] h2');
+    if (h) { try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+  }
+
+  function preload(id) {
+    var p = find(PRODUCTS, id);
+    if (!p) return;
+    [p.img, p.proofImg].forEach(function (f) { var im = new Image(); im.src = IMG + f + '.jpg'; });
+  }
+
+  function choose(key, val) {
+    if (locked) return;
+    locked = true;
+    var idx = QKEYS.indexOf(key);
+    state.answers[key] = val;
+    for (var k = idx + 1; k < QKEYS.length; k++) delete state.answers[QKEYS[k]];
+    $$('[data-key="' + key + '"]').forEach(function (b) {
+      var on = b.getAttribute('data-val') === val;
+      b.classList.toggle('selected', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (key === 'product') preload(val);
+    track('quiz_step_complete', { step_number: idx + 1, step_name: key, answer: val });
+    clearTimeout(advTimer);
+    advTimer = setTimeout(function () {
+      locked = false;
+      if (idx < 3) {
+        history.pushState({ step: idx + 1 }, '');
+        showStep(idx + 1);
+      } else {
+        startLoading();
+      }
+    }, reduced ? 0 : 260);
+  }
+
+  function startLoading() {
+    showStep(4);
+    var pr = find(PRODUCTS, state.answers.product);
+    var lines = ['Analisando suas respostas…', 'Separando as opções de ' + (pr ? pr.label.toLowerCase() : 'produtos') + '…', 'Preparando sua mensagem para o WhatsApp…'];
+    var n = 0;
+    var t = $('#loadingText');
+    t.textContent = lines[0];
+    clearInterval(loadTick);
+    loadTick = setInterval(function () { n = Math.min(n + 1, lines.length - 1); t.textContent = lines[n]; }, reduced ? 250 : 520);
+    clearTimeout(loadTimer);
+    loadTimer = setTimeout(function () {
+      clearInterval(loadTick);
+      buildResult();
+      history.pushState({ step: 5 }, '');
+      showStep(5);
+      track('quiz_complete', {
+        product: state.answers.product, need: state.answers.need,
+        region: state.answers.region, timeframe: state.answers.time
+      });
+    }, reduced ? 700 : 1700);
+  }
+
+  function isOpen() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Sao_Paulo', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+      var o = {};
+      parts.forEach(function (x) { o[x.type] = x.value; });
+      var mins = parseInt(o.hour, 10) * 60 + parseInt(o.minute, 10);
+      return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].indexOf(o.weekday) > -1 && mins >= 480 && mins < 1050;
+    } catch (e) { return true; }
+  }
+
+  function buildMessage() {
+    var a = state.answers;
+    var pr = find(PRODUCTS, a.product), nd = find(NEEDS, a.need), rg = find(REGIONS, a.region), tm = find(TIMES, a.time);
+    var note = ($('#noteInput').value || '').replace(/\s+/g, ' ').trim().slice(0, 200);
+    var msg = 'Olá! Vim pelo site da SOS Piscinas e quero um orçamento.\n\n' +
+      '• Interesse: ' + (pr ? pr.label : '-') + '\n' +
+      '• Preciso de: ' + (nd ? nd.label : '-') + '\n' +
+      '• Região: ' + (rg ? rg.label : '-') + '\n' +
+      '• Prazo: ' + (tm ? tm.label : '-');
+    if (note) msg += '\n• Detalhes: ' + note;
+    msg += '\n\n(Ref: ' + CFG.VARIANT + ')';
+    return msg;
+  }
+
+  function buildUrl() {
+    return 'https://wa.me/' + CFG.WA_NUMBER + '?text=' + encodeURIComponent(buildMessage());
+  }
+
+  function buildResult() {
+    var a = state.answers;
+    var pr = find(PRODUCTS, a.product), nd = find(NEEDS, a.need), rg = find(REGIONS, a.region), tm = find(TIMES, a.time);
+    var img = $('#resImg');
+    img.src = IMG + pr.img + '.jpg'; img.alt = pr.alt;
+    $('#t5').textContent = 'Boa notícia: trabalhamos com ' + pr.label.toLowerCase() + '.';
+    $('#resLead').textContent = pr.lead;
+    var ul = $('#resChecks');
+    ul.innerHTML = '';
+    var tick = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+    var bullets = pr.bullets.slice();
+    if (pr.id === 'churrasqueira' && rg && ['sao-goncalo', 'niteroi'].indexOf(rg.id) === -1) {
+      bullets.push('Confirmamos a instalação na sua cidade pelo WhatsApp');
+    }
+    bullets.forEach(function (t) { ul.appendChild(el('li', '', tick + '<span></span>')); ul.lastChild.lastChild.textContent = t; });
+    var pi = $('#proofImg');
+    pi.src = IMG + pr.proofImg + '.jpg'; pi.alt = pr.proofAlt;
+    $('#proofTitle').textContent = pr.proofTitle;
+    var sm = $('#resSummary');
+    sm.innerHTML = '';
+    [pr.label, nd.label, rg.label, tm.label].forEach(function (t) { var s = document.createElement('span'); s.textContent = t; sm.appendChild(s); });
+    var open = isOpen();
+    var hb = $('#hoursBadge');
+    hb.classList.toggle('off', !open);
+    $('#hoursText').textContent = open ? 'Atendendo agora (Seg–Sex, 8h às 17h30)' : 'Fora do horário: sua mensagem fica pronta e respondemos no próximo dia útil (Seg–Sex, 8h às 17h30)';
+    $('#waFinal').href = buildUrl();
+    track('quiz_result_view', { product: a.product });
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t.closest) return;
+    var opt = t.closest('[data-key][data-val]');
+    if (opt) { choose(opt.getAttribute('data-key'), opt.getAttribute('data-val')); return; }
+    if (t.closest('[data-back]')) { history.back(); return; }
+    if (t.closest('#restart')) {
+      state.answers = {};
+      $('#noteInput').value = '';
+      history.pushState({ step: 0 }, '');
+      showStep(0);
+      track('quiz_restart');
+      return;
+    }
+    var wa = t.closest('a[data-wa]');
+    if (wa) {
+      if (wa.id === 'waFinal') wa.href = buildUrl();
+      fireConversion(wa.getAttribute('data-wa'));
+    }
+  });
+
+  $('#noteInput').addEventListener('input', function () { $('#waFinal').href = buildUrl(); });
+
+  window.addEventListener('popstate', function (e) {
+    var s = e.state && typeof e.state.step === 'number' ? e.state.step : 0;
+    if (s === 4) s = 3;
+    if (!valid(s)) s = 0;
+    clearTimeout(loadTimer); clearInterval(loadTick); clearTimeout(advTimer);
+    locked = false;
+    if (s === 5) buildResult();
+    showStep(s);
+  });
+
+  history.replaceState({ step: 0 }, '');
+  showStep(0);
+  track('quiz_view');
+})();
+</script>
+</body>
+</html>
